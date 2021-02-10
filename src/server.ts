@@ -1,8 +1,5 @@
-import express from 'express'
-
-const app = express()
-
-const PORT = process.env.PORT || 8085
+import { PORT } from './configs'
+import { app } from './app'
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
