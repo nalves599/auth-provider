@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  api:
+    image: node:fermium
+    working_dir: /usr/api/
+    restart: always
+    command: bash -c "yarn && yarn dev"
+    volumes:
+      - ./src:/usr/api/src/
+      - ./package.json:/usr/api/package.json
+      - ./tsconfig.json:/usr/api/tsconfig.json
+    env_file:
+      - .env.development
+    environment:
+      - PORT=8085
+    ports:
+      - '8085:8085'
+    networks:
+      - backend
+
+networks:
+  backend:
